@@ -86,7 +86,13 @@ export function ProjectArchive({
         {String(filtered.length).padStart(2, '0')} {t.projects}
       </p>
       {filtered.map((p, i) => (
-        <Link className="archive-row" href={`/${locale}/projects/${p.slug}`} key={p.id}>
+        <Link
+          className="archive-row"
+          href={p.live_url || `/${locale}/projects/${p.slug}`}
+          key={p.id}
+          target={p.live_url ? '_blank' : undefined}
+          rel={p.live_url ? 'noopener noreferrer' : undefined}
+        >
           <span className="mono muted">{String(i + 1).padStart(2, '0')}</span>
           <div>
             <h3>{localized(p, 'title', locale)}</h3>
@@ -99,7 +105,7 @@ export function ProjectArchive({
               </span>
             ))}
           </div>
-          <span className="mono muted year">{p.project_type==='showcase'?'':p.year}</span>
+          <span className="mono muted year">{p.project_type === 'showcase' ? '' : p.year}</span>
           <ArrowUpRight size={19} />
         </Link>
       ))}

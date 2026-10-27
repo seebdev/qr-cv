@@ -4,6 +4,7 @@ export type ArchiveProject = Pick<
   | 'translations'
   | 'id'
   | 'slug'
+  | 'live_url'
   | 'title_en'
   | 'title_es'
   | 'short_description_en'
@@ -21,6 +22,7 @@ export function archiveProject(p: Project): ArchiveProject {
     translations,
     id,
     slug,
+    live_url,
     title_en,
     title_es,
     short_description_en,
@@ -42,6 +44,7 @@ export function archiveProject(p: Project): ArchiveProject {
     ),
     id,
     slug,
+    live_url,
     title_en,
     title_es,
     short_description_en,

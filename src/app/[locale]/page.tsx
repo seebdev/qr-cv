@@ -107,7 +107,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <span className="intro-location">{t.remote}</span>
         </div>
         {cover?.url && first && (
-          <Link className="intro-showcase" href={'/' + locale + '/projects/' + first.slug}>
+          <Link className="intro-showcase" href={first.live_url || '/' + locale + '/projects/' + first.slug}
+            target={first.live_url ? '_blank' : undefined} rel={first.live_url ? 'noopener noreferrer' : undefined}>
             <div className="browser-top">
               <span />
               <span />
