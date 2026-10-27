@@ -23,5 +23,5 @@ for (const entry of catalog) {
   delete publicMedia.created_at;
   items.push({ project, cover: publicMedia, file });
 }
-await fs.writeFile('content/portfolio/catalog.json', JSON.stringify({ target: 'osngdpjjsymjhxmuqbrg.supabase.co', items }, null, 2) + '\n');
+await fs.writeFile('content/portfolio/catalog.json', JSON.stringify({ target: 'xmuwahdcpujesxcykqrt.supabase.co', items }, null, 2) + '\n');
 console.log('Exported ' + items.length + ' published projects and their covers. No users or private records exported.');

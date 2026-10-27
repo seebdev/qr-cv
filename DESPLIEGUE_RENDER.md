@@ -12,7 +12,7 @@ La aplicación se despliega como **Web Service de Node**, no como sitio estátic
 ## Antes del primer despliegue
 
 1. Crear un repositorio en la cuenta de GitHub elegida y subir el código con `package-lock.json`. `.gitignore` excluye `.env.local`, `.local`, dependencias y resultados de pruebas. No subir copias de la base, claves ni credenciales de pruebas.
-2. Preparar un proyecto Supabase alojado. Aplicar, en orden, los tres archivos de `supabase/migrations`. Configurar Auth para la cuenta administradora, sin registro público.
+2. Preparar un proyecto Supabase alojado. Para un proyecto vacío, ejecutar `supabase/setup-new-project.sql` en SQL Editor: contiene las tres migraciones en una transacción y se detiene si ya hay tablas públicas. Alternativamente, aplicar los tres archivos de `supabase/migrations` en orden. No ejecutar ambas opciones. Configurar Auth para la cuenta administradora, sin registro público.
 3. Trasladar los registros del catálogo, ajustes, relaciones e imágenes al proyecto alojado, conservando IDs y `storage_path`. El bucket `portfolio` debe seguir siendo privado y usar las políticas de las migraciones. No copiar usuarios de pruebas, mensajes privados, contadores ni claves del entorno local. Los scripts `import-portfolio.mjs` y `import-parrilla-cover.mjs` son intencionalmente locales: no usarlos contra producción ni retirar su protección.
 4. Crear una cuenta administradora de producción mediante `scripts/create-admin.mjs` con credenciales de producción en el entorno de una sesión de confianza. No añadir `ADMIN_PASSWORD` a Render ni a Git.
 5. En Render: **New → Blueprint**, conectar el repositorio y revisar el plan. Introducir las variables solicitadas antes de compilar.
@@ -44,7 +44,7 @@ El repositorio incluye `content/portfolio/catalog.json` y seis capturas WebP, ex
 
 En Render → Environment:
 
-1. Configurar `SUPABASE_SECRET_KEY` con la clave secreta del proyecto `osngdpjjsymjhxmuqbrg` (también se admite su clave legacy `service_role`). Nunca colocarla en una variable `NEXT_PUBLIC_*`.
+1. Configurar `SUPABASE_SECRET_KEY` con la clave secreta del proyecto `xmuwahdcpujesxcykqrt` (también se admite su clave legacy `service_role`). Nunca colocarla en una variable `NEXT_PUBLIC_*`.
 2. Añadir `IMPORT_PORTFOLIO=true` y guardar/desplegar el último commit.
 3. Mantener `Start Command` en `npm start`. Su paso `prestart` importará el catálogo y las imágenes al bucket privado antes de arrancar Next.js.
 4. Buscar `Catálogo: 6/6 proyectos publicados.` en los logs y comprobar `/es`.

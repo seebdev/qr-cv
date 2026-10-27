@@ -41,7 +41,10 @@ export async function importPortfolio(db, bundle, readImage, log = console.log) 
 }
 
 async function main() {
-  if (process.argv.includes('--if-enabled') && process.env.IMPORT_PORTFOLIO !== 'true') return;
+  if (process.argv.includes('--if-enabled') && process.env.IMPORT_PORTFOLIO !== 'true') {
+    console.log('Importación omitida: configura IMPORT_PORTFOLIO=true o ejecuta npm run content:import.');
+    return;
+  }
   const root = new URL('../content/portfolio/', import.meta.url);
   const bundle = JSON.parse(await fs.readFile(new URL('catalog.json', root), 'utf8'));
   const url = new URL(process.env.NEXT_PUBLIC_SUPABASE_URL || '');
