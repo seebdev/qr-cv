@@ -28,7 +28,7 @@ export function ProjectCard({
               src={cover.url}
               alt={localized(cover, 'alt', locale)}
               fill
-              priority={index === 0}
+              priority={index < 2}
               sizes="(max-width:767px) 92vw, 46vw"
             />
           ) : (
