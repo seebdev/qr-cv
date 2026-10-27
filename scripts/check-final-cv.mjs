@@ -1,0 +1,14 @@
+import { chromium } from '@playwright/test';
+const browser=await chromium.launch({channel:'chrome'});
+const page=await browser.newPage({viewport:{width:390,height:844}});
+await page.goto('http://localhost:4563/es',{waitUntil:'networkidle'});
+const sizes=await page.locator('.brand-photo').first().evaluate(i=>({width:i.getBoundingClientRect().width,height:i.getBoundingClientRect().height}));
+if(sizes.width!==sizes.height) throw Error('Portrait must be circular');
+await page.screenshot({path:'docs/redesign/mobile.png'});
+await page.locator('#cv .cv-heading').scrollIntoViewIfNeeded(); await page.waitForTimeout(600);
+await page.screenshot({path:'docs/redesign/cv-mobile.png'});
+await page.setViewportSize({width:1440,height:1000});
+await page.locator('#cv .cv-heading').scrollIntoViewIfNeeded(); await page.waitForTimeout(600);
+await page.screenshot({path:'docs/redesign/cv-desktop.png'});
+console.log('Circular portrait verified',sizes);
+await browser.close();

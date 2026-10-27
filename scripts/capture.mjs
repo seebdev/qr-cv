@@ -1,0 +1,17 @@
+import { chromium } from '@playwright/test';
+import { mkdirSync } from 'node:fs';
+mkdirSync('.local/screenshots', { recursive: true });
+const browser = await chromium.launch({ channel: 'chrome', headless: true });
+const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+const errors = [];
+page.on('pageerror', (e) => errors.push(e.message));
+await page.goto('http://127.0.0.1:3000/en', { waitUntil: 'networkidle', timeout: 120000 });
+await page.addStyleTag({ content: 'main#main > .section { content-visibility: visible; }' });
+await page.screenshot({ path: '.local/screenshots/desktop.png', fullPage: true });
+await page.setViewportSize({ width: 390, height: 844 });
+await page.screenshot({ path: '.local/screenshots/mobile.png', fullPage: true });
+await page.goto('http://127.0.0.1:3000/es', { waitUntil: 'networkidle', timeout: 120000 });
+await page.addStyleTag({ content: 'main#main > .section { content-visibility: visible; }' });
+await page.screenshot({ path: '.local/screenshots/spanish.png', fullPage: true });
+await browser.close();
+process.stdout.write(JSON.stringify({ screenshots: 3, pageErrors: errors }) + '\n');

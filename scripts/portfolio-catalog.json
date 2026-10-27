@@ -1,0 +1,98 @@
+[
+  {
+    "slug": "crepes-waffles",
+    "name": "Crepes & Waffles",
+    "url": "https://crepes-and-waffles.vercel.app/cliente",
+    "category": "Web Apps",
+    "descriptions": [
+      "Un menú digital para explorar platos, buscar ingredientes y guardar favoritos en varios idiomas.",
+      "A digital menu to explore dishes, search ingredients and save favorites in several languages.",
+      "Un menu numérique pour découvrir les plats, rechercher des ingrédients et enregistrer des favoris en plusieurs langues.",
+      "Eine digitale Speisekarte zum Entdecken von Gerichten, Suchen nach Zutaten und Speichern von Favoriten in mehreren Sprachen.",
+      "Un menu digitale per esplorare piatti, cercare ingredienti e salvare preferiti in più lingue.",
+      "多语言数字菜单，可浏览菜品、搜索食材并收藏喜爱的菜品。",
+      "料理の閲覧、食材の検索、お気に入りの保存ができる多言語デジタルメニュー。",
+      "Um cardápio digital para explorar pratos, buscar ingredientes e salvar favoritos em vários idiomas."
+    ]
+  },
+  {
+    "slug": "tolentino-ia",
+    "name": "Tolentino IA",
+    "url": "https://web-tolentino-ia.vercel.app/",
+    "category": "AI",
+    "descriptions": [
+      "Una web que presenta un asistente de IA con una demostración de chat, información de planes y contacto por WhatsApp.",
+      "A website presenting an AI assistant with a chat demo, plan information and WhatsApp contact.",
+      "Un site présentant un assistant IA avec une démonstration de chat, des offres et un contact WhatsApp.",
+      "Eine Website mit KI-Assistent, Chat-Demo, Tarifinformationen und WhatsApp-Kontakt.",
+      "Un sito che presenta un assistente IA con demo chat, informazioni sui piani e contatto WhatsApp.",
+      "展示 AI 助手的网站，提供聊天演示、套餐信息和 WhatsApp 联系入口。",
+      "AIアシスタントのチャットデモ、プラン案内、WhatsAppでのお問い合わせを備えたウェブサイト。",
+      "Um site que apresenta um assistente de IA com demonstração de chat, informações de planos e contato por WhatsApp."
+    ]
+  },
+  {
+    "slug": "tetr-adventure",
+    "name": "Tetr Adventure Club",
+    "url": "https://tetr-adventure-club.vercel.app/",
+    "category": "Web Apps",
+    "descriptions": [
+      "Un globo interactivo para explorar destinos y organizar ideas de aventuras en una lista del club.",
+      "An interactive globe to explore destinations and organize adventure ideas in a club list.",
+      "Un globe interactif pour explorer des destinations et organiser les idées d’aventures du club.",
+      "Ein interaktiver Globus zum Entdecken von Reisezielen und Sammeln von Abenteuerideen für den Club.",
+      "Un globo interattivo per esplorare destinazioni e organizzare idee di avventura nella lista del club.",
+      "通过交互式地球浏览目的地，并在俱乐部清单中整理冒险创意。",
+      "インタラクティブな地球儀で目的地を探し、クラブのリストに冒険のアイデアをまとめるアプリ。",
+      "Um globo interativo para explorar destinos e organizar ideias de aventuras na lista do clube."
+    ]
+  },
+  {
+    "slug": "netflix-tetr",
+    "name": "Netflix Tetr · Nostalgia Lab",
+    "url": "https://netflix-tetr.vercel.app/",
+    "category": "Experiments",
+    "descriptions": [
+      "Una propuesta interactiva para compartir ideas sobre series y películas, votar y consultar un ranking de la comunidad.",
+      "An interactive concept for sharing ideas about shows and films, voting and exploring a community ranking.",
+      "Un concept interactif pour partager des idées de séries et films, voter et consulter un classement communautaire.",
+      "Ein interaktives Konzept zum Teilen von Serien- und Filmideen, Abstimmen und Entdecken einer Community-Rangliste.",
+      "Una proposta interattiva per condividere idee su serie e film, votare e consultare una classifica della community.",
+      "分享剧集与电影创意、参与投票并查看社区排行榜的交互式概念项目。",
+      "ドラマや映画のアイデアを共有し、投票やコミュニティランキングを楽しむ参加型コンセプト。",
+      "Uma proposta interativa para compartilhar ideias sobre séries e filmes, votar e consultar um ranking da comunidade."
+    ]
+  },
+  {
+    "slug": "perrote-gatote",
+    "name": "Perrote y Gatote",
+    "url": "https://www.perroteygatote.com/",
+    "category": "Business Systems",
+    "descriptions": [
+      "Una tienda de productos para mascotas con búsqueda, categorías por animal y carrito de compra.",
+      "A pet products shop with search, animal categories and a shopping cart.",
+      "Une boutique de produits pour animaux avec recherche, catégories par animal et panier.",
+      "Ein Shop für Haustierprodukte mit Suche, Tierkategorien und Warenkorb.",
+      "Un negozio di prodotti per animali con ricerca, categorie per animale e carrello.",
+      "宠物用品商店，提供搜索、按动物分类和购物车功能。",
+      "検索、動物別カテゴリー、ショッピングカートを備えたペット用品ショップ。",
+      "Uma loja de produtos para animais com busca, categorias por animal e carrinho de compras."
+    ]
+  },
+  {
+    "slug": "la-parrilla",
+    "name": "La Parrilla",
+    "url": "https://restaurante-nvei44549-tolentinosftw-dotcoms-projects.vercel.app/cliente",
+    "category": "Web Apps",
+    "descriptions": [
+      "Un menú digital con búsqueda de platos o ingredientes, categorías, favoritos y selector de idioma, según la captura compartida.",
+      "A digital menu with dish or ingredient search, categories, favorites and a language selector, as shown in the supplied screenshot.",
+      "Un menu numérique avec recherche de plats ou ingrédients, catégories, favoris et choix de langue, d’après la capture fournie.",
+      "Eine digitale Speisekarte mit Suche, Kategorien, Favoriten und Sprachauswahl laut bereitgestelltem Screenshot.",
+      "Un menu digitale con ricerca di piatti o ingredienti, categorie, preferiti e lingue, come mostra la schermata fornita.",
+      "根据提供的截图，这是一款具有菜品或食材搜索、分类、收藏及语言选择功能的数字菜单。",
+      "提供された画面で確認できる、料理や食材の検索、カテゴリー、お気に入り、言語選択を備えたデジタルメニュー。",
+      "Um cardápio digital com busca de pratos ou ingredientes, categorias, favoritos e idiomas, conforme a captura fornecida."
+    ]
+  }
+]

@@ -1,0 +1,16 @@
+import {createClient} from '@supabase/supabase-js';
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const url=process.env.NEXT_PUBLIC_SUPABASE_URL;
+assert.ok(['127.0.0.1','localhost'].includes(new URL(url).hostname));
+const db=createClient(url,process.env.SUPABASE_SECRET_KEY,{auth:{persistSession:false}});
+const {data,error}=await db.from('projects').select('id,slug,published,featured,display_order,featured_order,live_url,translations,project_media(id,storage_path)').order('display_order');assert.ifError(error);
+const catalog=JSON.parse(await fs.readFile('scripts/portfolio-catalog.json','utf8'));
+assert.deepEqual(data.filter(p=>p.published).map(p=>p.live_url),catalog.map(p=>p.url));
+assert.deepEqual(data.filter(p=>p.featured).map(p=>p.featured_order),[1,2,3,4,5,6]);
+const demos=data.filter(p=>p.slug.startsWith('visual-demo-'));assert.equal(demos.length,5);assert.ok(demos.every(p=>!p.published&&!p.featured&&p.project_media.length));
+for(const p of data.filter(p=>p.published))for(const l of ['es','en','fr','de','it','zh','ja','pt'])assert.ok(p.translations[l]?.title&&p.translations[l]?.short_description&&p.translations[l]?.features);
+const old=JSON.parse(await fs.readFile('.local/redesign-backup/catalog.json','utf8'));
+for(const p of old)assert.ok(data.some(x=>x.id===p.id));
+await fs.writeFile('.local/redesign-media/catalog-verification.json',JSON.stringify({projects:data.length,published:6,privateDemos:demos.length,preservedIds:old.length,locales:8,ids:data.map(p=>({slug:p.slug,id:p.id}))},null,2));
+console.log('PASS: six ordered projects, exact URLs, eight persisted languages, five private demos and original IDs retained.');
