@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import { PortfolioImage } from '@/components/portfolio-image';
+import { bundledCover } from '@/lib/bundled-cover';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getProjects, getSettings, getExperience, withMedia, assetUrl } from '@/lib/data';
@@ -114,7 +116,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               <ArrowUpRight size={15} />
             </div>
             <div className="intro-image">
-              <Image
+              <PortfolioImage
+                bundled={Boolean(bundledCover(cover))}
                 src={cover.url}
                 alt={localized(cover, 'alt', locale)}
                 fill

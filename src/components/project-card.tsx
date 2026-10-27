@@ -1,4 +1,5 @@
-import Image from 'next/image';
+import { PortfolioImage as Image } from './portfolio-image';
+import { bundledCover } from '@/lib/bundled-cover';
 import Link from 'next/link';
 import { ArrowUpRight } from './icons';
 import { localized, type Locale, type Project } from '@/lib/types';
@@ -23,6 +24,7 @@ export function ProjectCard({
         <div className="project-art">
           {cover?.url ? (
             <Image
+              bundled={Boolean(bundledCover(cover))}
               src={cover.url}
               alt={localized(cover, 'alt', locale)}
               fill

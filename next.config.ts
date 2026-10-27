@@ -14,7 +14,7 @@ const config: NextConfig = {
       },
     ],
     dangerouslyAllowLocalIP: local,
-    formats: ['image/avif', 'image/webp'],
+    formats: ['image/webp'],
     minimumCacheTTL: 300,
   },
   experimental: { serverActions: { bodySizeLimit: '2mb' } },

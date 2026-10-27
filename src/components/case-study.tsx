@@ -1,5 +1,6 @@
 import { statusLabel } from '@/lib/labels';
-import Image from 'next/image';
+import { PortfolioImage as Image } from './portfolio-image';
+import { bundledCover } from '@/lib/bundled-cover';
 import Link from 'next/link';
 import { localized, type Locale, type Project } from '@/lib/types';
 import { dictionary } from '@/lib/i18n';
@@ -107,6 +108,7 @@ export function CaseStudy({
       {cover?.url && (
         <div className="case-cover">
           <Image
+            bundled={!preview && Boolean(bundledCover(cover))}
             src={cover.url}
             alt={localized(cover, 'alt', locale)}
             fill
@@ -214,6 +216,7 @@ export function CaseStudy({
                         </video>
                       ) : (
                         <Image
+                          bundled={!preview && Boolean(bundledCover(m))}
                           src={m.url!}
                           alt={localized(m, 'alt', locale)}
                           width={1200}
