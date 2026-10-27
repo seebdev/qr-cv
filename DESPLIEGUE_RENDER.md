@@ -40,6 +40,18 @@ El build no ejecuta migraciones. La importación del catálogo se activa explíc
 
 ## Restaurar los seis proyectos en el Supabase de qr-cv
 
+### Opción directa con SQL Editor (sin clave privada en Render)
+
+Si las tablas ya existen pero no aparecen proyectos:
+
+1. Desplegar el último commit del repositorio. Usar `npm start` como Start Command y `IMPORT_PORTFOLIO=false`.
+2. Ejecutar **`supabase/import-public-portfolio.sql`** en SQL Editor del proyecto `xmuwahdcpujesxcykqrt`. Es un archivo distinto del instalador de tablas; añade los seis proyectos y sus referencias de portada. La última consulta debe devolver seis filas publicadas y destacadas. Los registros existentes se conservan.
+3. Abrir `/es`. Las portadas se buscan primero en Storage; si no están, la ruta de medios usa las capturas WebP que viajan con el servidor, pero solo después de verificar con RLS que su registro es público. No hay que convertir el bucket en público ni facilitar una contraseña de base de datos.
+
+El archivo SQL se genera desde el catálogo con `node scripts/build-public-catalog-sql.mjs`. Esta opción no necesita `SUPABASE_SECRET_KEY` para mostrar el catálogo; esa variable solo se necesita para otras funciones privadas que la utilicen.
+
+### Opción de importación a Storage con clave privada
+
 El repositorio incluye `content/portfolio/catalog.json` y seis capturas WebP, exportadas exclusivamente de los proyectos públicos locales. No incluye usuarios, mensajes, contraseñas ni proyectos privados.
 
 En Render → Environment:
