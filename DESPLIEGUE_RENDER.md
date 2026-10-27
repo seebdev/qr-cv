@@ -36,6 +36,20 @@ Las variables `NEXT_PUBLIC_*` quedan incorporadas durante la compilación: si ca
 - Los botones de WhatsApp y Gmail abren sus destinos. No existe formulario de envío de emails.
 - Canonical, sitemap, OG y cookies usan el dominio HTTPS final.
 
-El build de Render no ejecuta migraciones ni importa contenido automáticamente. Esto evita sobrescribir datos al redesplegar. La transferencia a Supabase alojado y la publicación quedan pendientes hasta elegir las cuentas y proyectos de destino.
+El build no ejecuta migraciones. La importación del catálogo se activa explícitamente como se describe abajo; no sobrescribe proyectos existentes.
+
+## Restaurar los seis proyectos en el Supabase de qr-cv
+
+El repositorio incluye `content/portfolio/catalog.json` y seis capturas WebP, exportadas exclusivamente de los proyectos públicos locales. No incluye usuarios, mensajes, contraseñas ni proyectos privados.
+
+En Render → Environment:
+
+1. Configurar `SUPABASE_SECRET_KEY` con la clave secreta del proyecto `osngdpjjsymjhxmuqbrg` (también se admite su clave legacy `service_role`). Nunca colocarla en una variable `NEXT_PUBLIC_*`.
+2. Añadir `IMPORT_PORTFOLIO=true` y guardar/desplegar el último commit.
+3. Mantener `Start Command` en `npm start`. Su paso `prestart` importará el catálogo y las imágenes al bucket privado antes de arrancar Next.js.
+4. Buscar `Catálogo: 6/6 proyectos publicados.` en los logs y comprobar `/es`.
+5. Quitar `IMPORT_PORTFOLIO` o cambiarla a `false` después de completar la importación.
+
+También puede ejecutarse una vez desde Render Shell con `npm run content:import`. La herramienta solo admite el proyecto de destino mencionado, inspecciona las tablas antes de escribir y conserva registros/cubiertas existentes. No crea tablas ni altera RLS. Si una importación se interrumpe después de insertar un proyecto, el siguiente intento puede completar su portada sin cambiar su estado de publicación.
 
 Referencias oficiales: [Next.js en Render](https://render.com/docs/deploy-nextjs-app), [Blueprint](https://render.com/docs/blueprint-spec), [Node](https://render.com/docs/node-version).

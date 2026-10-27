@@ -6,6 +6,8 @@
     "dev": "next dev --hostname 127.0.0.1",
     "build": "next build",
     "deploy:check": "node scripts/check-deployment.mjs",
+    "content:import": "node scripts/import-deployed-portfolio.mjs",
+    "prestart": "node scripts/import-deployed-portfolio.mjs --if-enabled",
     "start": "next start --hostname 0.0.0.0",
     "lint": "eslint .",
     "typecheck": "next typegen && tsc --noEmit",
