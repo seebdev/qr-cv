@@ -85,6 +85,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         ) : (
           <p>{t.selectedEmptyBody}</p>
         )}
+        <p className="projects-copyright">
+          <small>Copyright © {new Date().getFullYear()} Sebastián Solórzano.</small>
+        </p>
       </section>
       <CvSection locale={locale} />
       <section className="intro wrap">
