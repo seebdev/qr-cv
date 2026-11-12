@@ -40,7 +40,7 @@ test('featured card is first, opens the localized case and keeps the live link s
   await expect(page).toHaveURL(electronicsPath('es'));
 });
 
-test('all eight locales load complete product copy, metadata and both pending videos', async ({
+test('all eight locales load complete product copy, metadata and the supplied video', async ({
   page,
   request,
 }) => {
@@ -54,9 +54,18 @@ test('all eight locales load complete product copy, metadata and both pending vi
     const t = electronicsCopy[locale];
     await expect(page.locator('html')).toHaveAttribute('lang', locale);
     await expect(page.locator('.ep-hero-lead')).toHaveText(t.lead);
-    await expect(page.locator('.ep-video-empty')).toHaveCount(2);
+    await expect(page.locator('.ep-video-empty')).toHaveCount(1);
     await expect(page.locator('.ep-video-empty').first()).toContainText(t.comingSoon);
-    await expect(page.locator('video')).toHaveCount(0);
+    await expect(page.locator('video')).toHaveCount(1);
+    await expect(page.locator('video source')).toHaveAttribute(
+      'src',
+      '/electronics/videos/english.mp4',
+    );
+    await expect(page.locator('video')).toHaveAttribute('preload', 'none');
+    await expect(page.locator('video')).toHaveAttribute(
+      'poster',
+      '/electronics/posters/english.webp',
+    );
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
       'href',
       new RegExp(`${electronicsPath(locale)}$`),

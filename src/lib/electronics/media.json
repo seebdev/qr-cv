@@ -6,8 +6,8 @@
       "language": "en",
       "title": "videoEnglish",
       "description": "videoEnglishBody",
-      "src": null,
-      "poster": null,
+      "src": "/electronics/videos/english.mp4",
+      "poster": "/electronics/posters/english.webp",
       "adminOrder": 10,
       "captions": []
     },

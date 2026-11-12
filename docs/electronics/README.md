@@ -14,6 +14,8 @@ La presentación es contenido editorial versionado, independiente de las filas d
 
 ## Videos: un solo lugar de configuración
 
+El video recibido como «Video Project 6.mp4» está integrado en el espacio en inglés: `public/electronics/videos/english.mp4`, con una portada extraída en `public/electronics/posters/english.webp`. Dura aproximadamente 2 minutos y 40 segundos, conserva 1920 × 1080 y audio, y utiliza H.264/AAC con inicio rápido. El espacio en chino continúa pendiente de su archivo. No se han generado subtítulos ni traducciones del audio.
+
 Editar **`src/lib/electronics/media.json`**. Hay dos entradas permanentes, `english` y `chinese`. Sus idiomas son `en` y `zh-Hans`, independientemente del idioma de la página. Los campos `title` y `description` son claves de las ocho traducciones en `src/lib/electronics/copy/`; los títulos originales del video se identifican con su atributo `lang`.
 
 ### Archivos locales

@@ -7,4 +7,6 @@ Colocar aquí únicamente archivos autorizados para publicación. Configuración
 - `captions/english.vtt`, `captions/chinese.vtt` y traducciones opcionales.
 - `screenshots/clients.webp`, `opportunities.webp`, `stock.webp`, `search.webp`, `ai.webp`, `chat.webp`.
 
-Estos archivos no se incluyen hasta disponer de material real. El registro `src/lib/electronics/media.json` contiene `null` y la interfaz ofrece estados de ausencia sin solicitudes rotas. Los nombres de esta lista son convenciones recomendadas, no archivos ya existentes.
+Se incluyen `videos/english.mp4` y `posters/english.webp`, preparados a partir de «Video Project 6.mp4». El video conserva la resolución Full HD y el audio, con compresión H.264/AAC y metadatos al inicio para reproducción progresiva. La portada es un fotograma del archivo original.
+
+El video chino, los subtítulos y las capturas siguen pendientes. Sus fuentes permanecen en `null` o vacías en `src/lib/electronics/media.json`, sin solicitudes rotas. Los demás nombres de esta lista son convenciones recomendadas.

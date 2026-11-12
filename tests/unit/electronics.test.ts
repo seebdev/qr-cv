@@ -109,11 +109,14 @@ describe('safe media configuration', () => {
     ).toEqual(['https://media.example.test']);
   });
 
-  it('does not emit requests for absent files', async () => {
+  it('resolves the supplied video and keeps absent files empty', async () => {
     expect(await resolveSource('/electronics/videos/not-uploaded.mp4', 'video')).toBeNull();
     const media = await showcaseMedia();
     expect(media.videos).toHaveLength(2);
-    expect(media.videos.every((v) => v.src === null && v.poster === null)).toBe(true);
+    expect(media.videos[0].src).toBe('/electronics/videos/english.mp4');
+    expect(media.videos[0].poster).toBe('/electronics/posters/english.webp');
+    expect(media.videos[1].src).toBeNull();
+    expect(media.videos[1].poster).toBeNull();
     expect(media.screens).toHaveLength(6);
     expect(media.screens.every((s) => s.src === null)).toBe(true);
   });
@@ -123,16 +126,16 @@ describe('safe media configuration', () => {
     const project = {
       slug: electronicsSlug,
       published: true,
-      project_media: [{ id, kind: 'video', display_order: 10 }],
+      project_media: [{ id, kind: 'video', display_order: 20 }],
     } as Project;
-    expect((await showcaseMedia([project])).videos[0].src).toBe(`/api/media/${id}`);
-    expect((await showcaseMedia([{ ...project, published: false }])).videos[0].src).toBeNull();
+    expect((await showcaseMedia([project])).videos[1].src).toBe(`/api/media/${id}`);
+    expect((await showcaseMedia([{ ...project, published: false }])).videos[1].src).toBeNull();
     expect(
       (
         await showcaseMedia([
           { ...project, project_media: [...project.project_media, ...project.project_media] },
         ])
-      ).videos[0].src,
+      ).videos[1].src,
     ).toBeNull();
   });
 });
