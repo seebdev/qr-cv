@@ -1,6 +1,10 @@
 # qr-cv — Portafolio de Sebastián Solórzano
 
-A bilingual developer portfolio and private content studio built with Next.js, React, TypeScript, Tailwind CSS and Supabase. English-first, designed for recruiters and clients who need to understand the work quickly and explore the engineering decisions in depth.
+## Electronic Parts Intelligence
+
+Presentación pública destacada en `/{locale}/projects/demo-electronics`, disponible en los ocho idiomas del portafolio. Incluye módulos interactivos, arquitectura, IA, galería y dos espacios de video configurables. Guía de medios y administración: [docs/electronics/README.md](docs/electronics/README.md). Evidencia técnica y límites: [docs/electronics/EVIDENCE.md](docs/electronics/EVIDENCE.md). Resultados: [docs/electronics/VERIFICATION.md](docs/electronics/VERIFICATION.md).
+
+A multilingual developer portfolio and private content studio built with Next.js, React, TypeScript, Tailwind CSS and Supabase. English-first, designed for recruiters and clients who need to understand the work quickly and explore the engineering decisions in depth.
 
 There are no seeded professional claims, projects, clients or impact statistics. The technology catalog is the only seed data. Add verified projects through the administrator.
 

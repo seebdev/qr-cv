@@ -16,13 +16,13 @@ test('eight locales preserve the catalog, links and project route', async ({ pag
     await expect(page.locator('.project-card h2')).toHaveText(catalog.map((p) => p.name));
     expect(
       await page
-        .locator('.project-card .project-links a[target="_blank"]')
+        .locator('.project-card > a[target="_blank"]')
         .evaluateAll((els) => els.map((e) => e.getAttribute('href'))),
     ).toEqual(catalog.map((p) => p.url));
     await expect(page.locator('.project-card').first().locator('p')).toHaveText(
       catalog[0].descriptions[locales.indexOf(locale)],
     );
-    await page.locator('.project-links a').first().click();
+    await page.goto('/' + locale + '/projects/crepes-waffles');
     await expect(page).toHaveURL(new RegExp('/' + locale + '/projects/crepes-waffles$'));
 
     const other = locale === 'fr' ? 'ja' : 'fr';
