@@ -10,6 +10,9 @@ import { languageAlternates, regions } from '@/lib/locales';
 import { localized } from '@/lib/types';
 import { archiveProject } from '@/lib/archive';
 import { ProjectCard } from '@/components/project-card';
+import { ElectronicsFeaturedCard } from '@/components/electronics/featured-card';
+import { showcaseMedia } from '@/lib/electronics/media';
+import { electronicsArchive, withoutElectronics } from '@/lib/electronics/project';
 import { ProjectArchive } from '@/components/project-archive';
 import { CopyEmail } from '@/components/contact-form';
 import { CvSection } from '@/components/cv-section';
@@ -51,12 +54,13 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     getExperience(),
   ]);
   const featured = await Promise.all(
-    projects
+    withoutElectronics(projects)
       .filter((p) => p.featured)
       .sort((a, b) => a.featured_order - b.featured_order || a.display_order - b.display_order)
       .slice(0, 6)
       .map((p) => withMedia(p)),
   );
+  const { screens } = await showcaseMedia(projects);
   const first = featured[0],
     cover = first?.project_media.find((m) => m.is_cover),
     photo = await assetUrl(s.photo_path);
@@ -76,6 +80,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </div>
           <p>{t.selectedIntro}</p>
         </div>
+        <ElectronicsFeaturedCard
+          locale={locale}
+          image={screens.find((screen) => screen.module === 'clients')?.src || null}
+        />
         {featured.length ? (
           <div className="project-grid">
             {featured.map((p, i) => (
@@ -110,8 +118,12 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <span className="intro-location">{t.remote}</span>
         </div>
         {cover?.url && first && (
-          <Link className="intro-showcase" href={first.live_url || '/' + locale + '/projects/' + first.slug}
-            target={first.live_url ? '_blank' : undefined} rel={first.live_url ? 'noopener noreferrer' : undefined}>
+          <Link
+            className="intro-showcase"
+            href={first.live_url || '/' + locale + '/projects/' + first.slug}
+            target={first.live_url ? '_blank' : undefined}
+            rel={first.live_url ? 'noopener noreferrer' : undefined}
+          >
             <div className="browser-top">
               <span />
               <span />
@@ -220,7 +232,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </div>
           <p>{t.archiveIntro}</p>
         </div>
-        <ProjectArchive projects={projects.map(archiveProject)} locale={locale} />
+        <ProjectArchive
+          projects={[electronicsArchive(), ...withoutElectronics(projects).map(archiveProject)]}
+          locale={locale}
+        />
       </section>
       <section id="contact" className="section wrap">
         <div className="contact-grid">
@@ -249,8 +264,22 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             </div>
           </div>
           <div className="contact-direct">
-            <a className="button primary" href="https://wa.me/573108853158" target="_blank" rel="noopener noreferrer">WhatsApp <ArrowUpRight size={18} /></a>
-            <a className="button" href="https://mail.google.com/mail/?view=cm&fs=1&to=sebastianssc01%40gmail.com" target="_blank" rel="noopener noreferrer">Gmail <ArrowUpRight size={18} /></a>
+            <a
+              className="button primary"
+              href="https://wa.me/573108853158"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp <ArrowUpRight size={18} />
+            </a>
+            <a
+              className="button"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=sebastianssc01%40gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Gmail <ArrowUpRight size={18} />
+            </a>
           </div>
         </div>
       </section>

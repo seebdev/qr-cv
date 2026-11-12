@@ -1,0 +1,33 @@
+{
+  "allowedOrigins": [],
+  "videos": [
+    {
+      "id": "english",
+      "language": "en",
+      "title": "videoEnglish",
+      "description": "videoEnglishBody",
+      "src": null,
+      "poster": null,
+      "adminOrder": 10,
+      "captions": []
+    },
+    {
+      "id": "chinese",
+      "language": "zh-Hans",
+      "title": "videoChinese",
+      "description": "videoChineseBody",
+      "src": null,
+      "poster": null,
+      "adminOrder": 20,
+      "captions": []
+    }
+  ],
+  "screenshots": [
+    { "module": "clients", "src": null },
+    { "module": "opportunities", "src": null },
+    { "module": "stock", "src": null },
+    { "module": "search", "src": null },
+    { "module": "ai", "src": null },
+    { "module": "chat", "src": null }
+  ]
+}

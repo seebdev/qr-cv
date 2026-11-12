@@ -1,7 +1,19 @@
 import type { NextConfig } from 'next';
+import electronicsMedia from './src/lib/electronics/media.json';
 const origin = process.env.NEXT_PUBLIC_SUPABASE_URL || 'http://127.0.0.1:54321';
 const storage = new URL(origin),
   local = ['127.0.0.1', 'localhost'].includes(storage.hostname);
+// Shared explicit allowlist: no wildcard CSP expansion for external showcase media.
+const mediaOrigins = electronicsMedia.allowedOrigins
+  .filter((value: string) => {
+    try {
+      const url = new URL(value);
+      return url.protocol === 'https:' && url.origin === value;
+    } catch {
+      return false;
+    }
+  })
+  .join(' ');
 const config: NextConfig = {
   poweredByHeader: false,
   images: {
@@ -38,8 +50,12 @@ const config: NextConfig = {
               (process.env.NODE_ENV === 'development' ? " 'unsafe-eval'" : '') +
               "; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: " +
               origin +
+              ' ' +
+              mediaOrigins +
               "; media-src 'self' blob: " +
               origin +
+              ' ' +
+              mediaOrigins +
               "; connect-src 'self' " +
               origin +
               (local ? ' ws://127.0.0.1:*' : '') +

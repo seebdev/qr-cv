@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Search, ArrowUpRight } from './icons';
 import { categories, localized, type Locale } from '@/lib/types';
 import { dictionary } from '@/lib/i18n';
+import { electronicsSlug } from '@/lib/electronics/links';
 export function ProjectArchive({
   projects,
   locale,
@@ -88,10 +89,14 @@ export function ProjectArchive({
       {filtered.map((p, i) => (
         <Link
           className="archive-row"
-          href={p.live_url || `/${locale}/projects/${p.slug}`}
+          href={
+            p.slug === electronicsSlug
+              ? `/${locale}/projects/${p.slug}`
+              : p.live_url || `/${locale}/projects/${p.slug}`
+          }
           key={p.id}
-          target={p.live_url ? '_blank' : undefined}
-          rel={p.live_url ? 'noopener noreferrer' : undefined}
+          target={p.live_url && p.slug !== electronicsSlug ? '_blank' : undefined}
+          rel={p.live_url && p.slug !== electronicsSlug ? 'noopener noreferrer' : undefined}
         >
           <span className="mono muted">{String(i + 1).padStart(2, '0')}</span>
           <div>

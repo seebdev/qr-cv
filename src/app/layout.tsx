@@ -4,6 +4,7 @@ import { headers } from 'next/headers';
 import localFont from 'next/font/local';
 import './globals.css';
 import './redesign.css';
+import './electronics.css';
 const sans = localFont({
   src: '../../node_modules/@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2',
   variable: '--font-manrope',
